@@ -2,9 +2,27 @@ const suit = ['hearts', 'diamonds', 'clubs', 'spades'];
 const cardsWrapper = document.querySelector('.cards-wrapper');
 const btnWrapper = document.querySelector('.btn-wrapper'); /* eslint-disable-line */
 const selectedCardsWrapper = document.querySelector('.selected-cards'); /* eslint-disable-line */
+const cards = [];
+
+/*
+HELPER FUNCTIONS. Functions for to keep clean and more manteinable
+the main functions in charge of the flow of the application.
+ */
+function showCards() {
+  // For each dataObject, create a new card and append it to the DOM
+  cards.forEach((card, i) => {
+    const positionFromLeft = i * 15;
+    const cardElement = document.createElement('div');
+    cardElement.setAttribute('data-value', card.value);
+    cardElement.classList.add('card', `${card.suit}-${card.value}`);
+    cardElement.style.left = `${positionFromLeft}px`;
+    cardsWrapper.append(cardElement);
+  });
+}
+
+// MAIN FUNCTIONS.
 
 function createCards() {
-  const cards = [];
   // Create an array with objects containing the value and the suit of each card
   for (let i = 1; i <= 13; i += 1) {
     const cardObject = {
@@ -34,15 +52,8 @@ function createCards() {
     };
     cards.push(cardObject);
   }
-  // For each dataObject, create a new card and append it to the DOM
-  cards.forEach((card, i) => {
-    const positionFromLeft = i * 15;
-    const cardElement = document.createElement('div');
-    cardElement.setAttribute('data-value', card.value);
-    cardElement.classList.add('card', `${card.suit}-${card.value}`);
-    cardElement.style.left = `${positionFromLeft}px`;
-    cardsWrapper.append(cardElement);
-  });
+  // Call Helper function showCards()
+  showCards();
 }
 // Function to clear out the initial button and create new buttons to play the game.
 function createButtons() {
