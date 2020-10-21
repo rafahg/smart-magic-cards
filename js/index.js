@@ -1,4 +1,4 @@
-const suit = ['hearts'];
+const suit = ['hearts', 'diamonds', 'clubs', 'spades'];
 const cardsWrapper = document.querySelector('.cards-wrapper');
 const btnWrapper = document.querySelector('.btn-wrapper'); /* eslint-disable-line */
 const selectedCardsWrapper = document.querySelector('.selected-cards'); /* eslint-disable-line */
@@ -13,7 +13,27 @@ function createCards() {
     };
     cards.push(cardObject);
   }
-
+  for (let j = 1; j <= 13; j += 1) {
+    const cardObject = {
+      value: j,
+      suit: suit[1],
+    };
+    cards.push(cardObject);
+  }
+  for (let k = 1; k <= 13; k += 1) {
+    const cardObject = {
+      value: k,
+      suit: suit[2],
+    };
+    cards.push(cardObject);
+  }
+  for (let l = 1; l <= 13; l += 1) {
+    const cardObject = {
+      value: l,
+      suit: suit[3],
+    };
+    cards.push(cardObject);
+  }
   // For each dataObject, create a new card and append it to the DOM
   cards.forEach((card, i) => {
     const positionFromLeft = i * 15;
