@@ -59,6 +59,13 @@ function createCards() {
 function createButtons() {
   const startButton = document.getElementById('start-game');
   startButton.remove();
+  // adding new button shuffle
+  const shuffleButton = document.createElement('BUTTON');
+  shuffleButton.id = 'shuffle-button';
+  shuffleButton.className = 'btn btn-lg btn-secondary';
+  const textButton = document.createTextNode('Shuffle');
+  shuffleButton.appendChild(textButton);
+  document.getElementById('buttons-row').appendChild(shuffleButton);
 }
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
