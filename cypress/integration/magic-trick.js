@@ -14,9 +14,9 @@ describe('Play game', () => {
     cy.get('#start-game').should('have.text', "Let's get started").click();
     cy.get('[class*="hearts-"]').should('have.length', 13);
 
-    // cy.get('#start-game').should('have.not.exist');
+    cy.get('#start-game').should('have.not.exist');
 
-    // /* Each suit is rederted with 13 cards each (hearts, spades, diamonds, clubs) */
+    // /* Each suit is rendered with 13 cards each (hearts, spades, diamonds, clubs) */
     // suits.forEach((suit) => {
     //   cy.get(`[class*="${suit}-"]`).should('have.length', 13);
     // });
