@@ -17,15 +17,15 @@ describe('Play game', () => {
     cy.get('#start-game').should('have.not.exist');
 
     // /* Each suit is rendered with 13 cards each (hearts, spades, diamonds, clubs) */
-    // suits.forEach((suit) => {
-    //   cy.get(`[class*="${suit}-"]`).should('have.length', 13);
-    // });
+    suits.forEach((suit) => {
+      cy.get(`[class*="${suit}-"]`).should('have.length', 13);
+    });
 
     // /* The cards are sorted and grouped by suit (hearts, spades, diamonds, clubs) */
-    // cy.get('.card').then((cards) => {
-    //   const allCardClasses = [...cards].map((card) => card.classList[1]);
-    //   expect(allCardClasses).to.deep.equal(sortedCardsClasses);
-    // });
+    cy.get('.card').then((cards) => {
+      const allCardClasses = [...cards].map((card) => card.classList[1]);
+      expect(allCardClasses).to.deep.equal(sortedCardsClasses);
+    });
 
     // /* Click the `Suffle` button */
     // cy.contains('Shuffle').click();
