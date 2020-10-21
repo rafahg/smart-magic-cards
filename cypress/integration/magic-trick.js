@@ -28,7 +28,7 @@ describe('Play game', () => {
     });
 
     // /* Click the `Suffle` button */
-    // cy.contains('Shuffle').click();
+    cy.contains('Shuffle').click();
 
     // /* The cards are not sorted anymore (shuffled) */
     // cy.get('.card').then((cards) => {
