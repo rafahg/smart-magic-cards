@@ -1,4 +1,4 @@
-const suit = 'hearts';
+const suit = ['hearts'];
 const cardsWrapper = document.querySelector('.cards-wrapper');
 const btnWrapper = document.querySelector('.btn-wrapper'); /* eslint-disable-line */
 const selectedCardsWrapper = document.querySelector('.selected-cards'); /* eslint-disable-line */
@@ -9,7 +9,7 @@ function createCards() {
   for (let i = 1; i <= 13; i += 1) {
     const cardObject = {
       value: i,
-      suit,
+      suit: suit[0],
     };
     cards.push(cardObject);
   }
