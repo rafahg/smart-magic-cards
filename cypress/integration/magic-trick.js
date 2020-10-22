@@ -38,10 +38,10 @@ describe('Play game', () => {
 
     // Button Show/Hide is created
 
-    cy.contains('Flip Cards');
+    cy.contains('Flip cards');
 
     // /* Click the `Flip cards` button */
-    cy.contains('Flip cards').click();
+    // cy.contains('Flip cards').click();
 
     // /* The cards are now flipped */
     // cy.get('.cards-wrapper').should('have.class', 'hidden');

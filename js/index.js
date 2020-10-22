@@ -66,6 +66,13 @@ function createButtons() {
   const textButton = document.createTextNode('Shuffle');
   shuffleButton.appendChild(textButton);
   document.getElementById('buttons-row').appendChild(shuffleButton);
+  // adding new button Flip cards.
+  const flipCardsButton = document.createElement('BUTTON');
+  flipCardsButton.id = 'flip-button';
+  flipCardsButton.className = 'btn btn-lg btn-secondary';
+  const textFlipButton = document.createTextNode('Flip cards');
+  flipCardsButton.appendChild(textFlipButton);
+  document.getElementById('buttons-row').appendChild(flipCardsButton);
 }
 
 // Funtion to shuffle the existing deck.
