@@ -1,6 +1,6 @@
 const suits = ['hearts', 'spades', 'diamonds', 'clubs'];
 const sortedCardsClasses = [];
-let selectedCard; /* eslint-disable-line */
+let firstCardSelected; /* eslint-disable-line */
 suits.forEach((suit) => [...Array(13)].forEach((_, i) => sortedCardsClasses.push(`${suit}-${i + 1}`)));
 
 describe('Play game', () => {
@@ -57,15 +57,15 @@ describe('Play game', () => {
 
     // /* Click on the first card */
     cy.get('.card').then((cards) => {
-      [selectedCard] = cards;
-      cards[0].click();
+      firstCardSelected = cards;
+      firstCardSelected[0].click();
     });
 
     // /* The selected card moved to the `selected-card-wrapper` */
-    // cy.get('.selected-card-wrapper .card').then((cards) => {
-    //   expect(cards).to.have.length(1);
-    //   expect(cards[0]).to.equal(selectedCard);
-    // });
+    cy.get('.selected-card-wrapper .card').then((cards) => {
+      expect(cards).to.have.length(1);
+      expect(cards[0]).to.equal(firstCardSelected);
+    });
 
     // /* Click on the `Magic` button */
     // cy.contains('Magic').click();
