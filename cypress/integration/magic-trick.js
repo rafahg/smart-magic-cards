@@ -28,13 +28,13 @@ describe('Play game', () => {
     });
 
     // /* Click the `Suffle` button */
-    // cy.contains('Shuffle').click();
+    cy.contains('Shuffle').click();
 
-    // /* The cards are not sorted anymore (shuffled) */
-    // cy.get('.card').then((cards) => {
-    //   const allCardClasses = [...cards].map((card) => card.classList[1]);
-    //   expect(allCardClasses).to.not.deep.equal(sortedCardsClasses);
-    // });
+    /* The cards are not sorted anymore (shuffled) */
+    cy.get('.card').then((cards) => {
+      const allCardClasses = [...cards].map((card) => card.classList[1]);
+      expect(allCardClasses).to.not.deep.equal(sortedCardsClasses);
+    });
 
     // /* Click the `Flip cards` button */
     // cy.contains('Flip cards').click();
