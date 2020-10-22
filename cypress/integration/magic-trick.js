@@ -1,8 +1,8 @@
 const suits = ['hearts', 'spades', 'diamonds', 'clubs'];
 const sortedCardsClasses = [];
-let firstCardSelected; /* eslint-disable-line */
+let selectedCards; /* eslint-disable-line */
 suits.forEach((suit) => [...Array(13)].forEach((_, i) => sortedCardsClasses.push(`${suit}-${i + 1}`)));
-
+// let selectedCard;
 describe('Play game', () => {
   it('Visits the game and play', () => {
     cy.visit('./index.html');
@@ -57,32 +57,32 @@ describe('Play game', () => {
 
     // /* Click on the first card */
     cy.get('.card').then((cards) => {
-      firstCardSelected = cards;
-      firstCardSelected[0].click();
+      selectedCards = cards;
+      selectedCards[0].click();
     });
 
     // /* The selected card moved to the `selected-card-wrapper` */
     cy.get('.selected-card-wrapper .card').then((cards) => {
       expect(cards).to.have.length(1);
-      expect(cards[0]).to.equal(firstCardSelected[0]);
+      expect(cards[0]).to.equal(selectedCards[0]);
     });
 
     // /* Click on the `Magic` button */
-    // cy.contains('Magic').click();
+    cy.contains('Magic').click();
 
     // /* All the related cards have been removed from the deck */
-    // cy.get('.cards-wrapper .card').then((cards) => {
-    //   const allCardValues = [...cards].map((card) => card.getAttribute('data-value'));
-    //   expect(allCardValues).to.have.length(48);
-    //   expect(allCardValues).to.not.include(selectedCard.getAttribute('data-value'));
-    // });
+    cy.get('.cards-wrapper .card').then((cards) => {
+      const allCardValues = [...cards].map((card) => card.getAttribute('id'));
+      expect(allCardValues).to.have.length(48);
+      // expect(allCardValues).to.not.include(card.getAttribute('id'));
+    });
 
     // /* The removed cards are desplayed in the `selected-card-wrapper` */
-    // cy.get('.selected-card-wrapper .card').then((cards) => {
-    //   const allCardValues = [...cards].map((card) => card.getAttribute('data-value'));
-    //   const selectedValue = selectedCard.getAttribute('data-value');
-    //   expect(allCardValues).to.have.length(4);
-    //   expect(allCardValues).to.deep.equal([selectedValue, selectedValue, selectedValue, selectedValue]);
-    // });
+    cy.get('.selected-card-wrapper .card').then((cards) => {
+      const allCardValues = [...cards].map((selectedCard) => selectedCard.getAttribute('data-value'));
+      // const selectedValue = selectedCard.getAttribute('data-value');
+      expect(allCardValues).to.have.length(4);
+      expect(allCardValues).to.deep.equal([allCardValues[0], allCardValues[1], allCardValues[2], allCardValues[3]]);
+    });
   });
 });
