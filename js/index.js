@@ -40,6 +40,23 @@ function createMagicButton() {
   document.getElementById('buttons-row').appendChild(magicButton);
 }
 
+function selectingTrickDeck() {
+  const pickedCard = selectedCards[0].getAttribute('data-value');
+  const deckWrapper = [...cardsWrapper.children];
+  for (let i = 0; i < deckWrapper.length; i += 1) {
+    if (pickedCard === deckWrapper[i].getAttribute('data-value')) {
+      selectedCards.push(deckWrapper[i]);
+    }
+  }
+}
+
+function movingCardsTrick() {
+  selectedCards.forEach((selectedCard, i) => {
+    selectedCard.style = `left: ${i * 33}px`;
+    selectedCardsWrapper.append(selectedCard);
+  });
+}
+
 // Function for select the id of the clicked element on the rendered deck.
 /* eslint-disable */
 function selectElement(clickedElement) {
@@ -131,12 +148,18 @@ function flipCards() {
   backDeck.classList.toggle('hidden');
 }
 
-function pickingCard() {
+function magicTrick() {
+  selectingTrickDeck();
+  movingCardsTrick();
+}
+
+function pickingCardAndDoTrick() {
   const selectedCard = document.getElementById(firstCardSelected[0]);
   selectedCards.push(selectedCard);
   document.getElementById(firstCardSelected[0]).remove();
   showSelectedCard();
   createMagicButton();
+  document.getElementById('magic-button').addEventListener('click', magicTrick);
 }
 
 // Function to start the game by clearing the wrapper, creating
@@ -149,4 +172,4 @@ function startGame() {
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
-document.getElementById('deck').addEventListener('click', pickingCard);
+document.getElementById('deck').addEventListener('click', pickingCardAndDoTrick);
