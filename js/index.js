@@ -159,7 +159,7 @@ function pickingCardAndDoTrick() {
   document.getElementById(firstCardSelected[0]).remove();
   showSelectedCard();
   createMagicButton();
-  document.getElementById('magic-button').addEventListener('click', magicTrick);
+  document.getElementById('magic-button').addEventListener('click', magicTrick, { once: true });
 }
 
 // Function to start the game by clearing the wrapper, creating
@@ -172,4 +172,4 @@ function startGame() {
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
-document.getElementById('deck').addEventListener('click', pickingCardAndDoTrick);
+document.getElementById('deck').addEventListener('click', pickingCardAndDoTrick, { once: true });
