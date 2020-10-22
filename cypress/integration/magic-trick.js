@@ -64,7 +64,7 @@ describe('Play game', () => {
     // /* The selected card moved to the `selected-card-wrapper` */
     cy.get('.selected-card-wrapper .card').then((cards) => {
       expect(cards).to.have.length(1);
-      expect(cards[0]).to.equal(firstCardSelected);
+      expect(cards[0]).to.equal(firstCardSelected[0]);
     });
 
     // /* Click on the `Magic` button */

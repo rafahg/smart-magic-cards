@@ -23,6 +23,13 @@ function showCards() {
     cardsWrapper.append(cardElement);
   });
 }
+// Function for show the selected card in the selected card wrapper.
+function showSelectedCard() {
+  const positionStyle = 'left';
+  selectedCardsWrapper.append(selectedCards[0]);
+  const pickedCard = document.getElementById(selectedCards[0].id);
+  pickedCard.style = positionStyle;
+}
 // Function for select the id of the clicked element on the rendered deck.
 /* eslint-disable */
 function selectElement(clickedElement) {
@@ -118,6 +125,7 @@ function pickingCard() {
   const selectedCard = document.getElementById(firstCardSelected[0]);
   selectedCards.push(selectedCard);
   document.getElementById(firstCardSelected[0]).remove();
+  showSelectedCard();
 }
 
 // Function to start the game by clearing the wrapper, creating
