@@ -96,7 +96,8 @@ function shuffle() {
 }
 
 function flipCards() {
-  alert('It is clicking!!!!');
+  const backDeck = document.getElementById('deck');
+  backDeck.classList.toggle('hidden');
 }
 
 // Function to start the game by clearing the wrapper, creating

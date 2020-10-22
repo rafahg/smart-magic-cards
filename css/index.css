@@ -4139,6 +4139,7 @@ template {
 
 .btn {
   display: inline-block;
+  margin: 10px;
   font-weight: 400;
   color: #212529;
   text-align: center;
