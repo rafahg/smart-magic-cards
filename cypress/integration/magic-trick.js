@@ -36,6 +36,10 @@ describe('Play game', () => {
       expect(allCardClasses).to.not.deep.equal(sortedCardsClasses);
     });
 
+    // Button Show/Hide is created
+
+    cy.contains('Flip Cards');
+
     // /* Click the `Flip cards` button */
     cy.contains('Flip cards').click();
 
