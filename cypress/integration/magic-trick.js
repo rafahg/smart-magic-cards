@@ -68,7 +68,7 @@ describe('Play game', () => {
     });
 
     // /* Click on the `Magic` button */
-    // cy.contains('Magic').click();
+     cy.contains('Magic').click();
 
     // /* All the related cards have been removed from the deck */
     // cy.get('.cards-wrapper .card').then((cards) => {
