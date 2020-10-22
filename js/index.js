@@ -57,6 +57,23 @@ function movingCardsTrick() {
   });
 }
 
+function createShuffle() {
+  const shuffleButton = document.createElement('BUTTON');
+  shuffleButton.id = 'shuffle-button';
+  shuffleButton.className = 'btn btn-lg btn-secondary';
+  const textButton = document.createTextNode('Shuffle');
+  shuffleButton.appendChild(textButton);
+  document.getElementById('buttons-row').appendChild(shuffleButton);
+}
+
+function createFlip() {
+  const flipCardsButton = document.createElement('BUTTON');
+  flipCardsButton.id = 'flip-button';
+  flipCardsButton.className = 'btn btn-lg btn-secondary';
+  const textFlipButton = document.createTextNode('Flip cards');
+  flipCardsButton.appendChild(textFlipButton);
+  document.getElementById('buttons-row').appendChild(flipCardsButton);
+}
 // Function for select the id of the clicked element on the rendered deck.
 /* eslint-disable */
 function selectElement(clickedElement) {
@@ -64,7 +81,6 @@ function selectElement(clickedElement) {
   if (firstCardSelected.length === 0) {
     firstCardSelected.push(pickedCard);
   }
-  console.log(firstCardSelected);
 }
 /* eslint-enable */
 
@@ -108,19 +124,9 @@ function createButtons() {
   const startButton = document.getElementById('start-game');
   startButton.remove();
   // adding new button shuffle
-  const shuffleButton = document.createElement('BUTTON');
-  shuffleButton.id = 'shuffle-button';
-  shuffleButton.className = 'btn btn-lg btn-secondary';
-  const textButton = document.createTextNode('Shuffle');
-  shuffleButton.appendChild(textButton);
-  document.getElementById('buttons-row').appendChild(shuffleButton);
+  createShuffle();
   // adding new button Flip cards.
-  const flipCardsButton = document.createElement('BUTTON');
-  flipCardsButton.id = 'flip-button';
-  flipCardsButton.className = 'btn btn-lg btn-secondary';
-  const textFlipButton = document.createTextNode('Flip cards');
-  flipCardsButton.appendChild(textFlipButton);
-  document.getElementById('buttons-row').appendChild(flipCardsButton);
+  createFlip();
 }
 
 // Funtion to shuffle the existing deck.
