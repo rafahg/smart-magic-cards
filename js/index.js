@@ -95,12 +95,17 @@ function shuffle() {
   });
 }
 
+function flipCards() {
+  alert('It is clicking!!!!');
+}
+
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
   createButtons();
   createCards();
   document.getElementById('shuffle-button').addEventListener('click', shuffle);
+  document.getElementById('flip-button').addEventListener('click', flipCards);
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
