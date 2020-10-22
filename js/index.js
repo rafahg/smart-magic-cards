@@ -11,7 +11,7 @@ the main functions in charge of the flow of the application.
 function showCards() {
   // For each dataObject, create a new card and append it to the DOM
   cards.forEach((card, i) => {
-    const positionFromLeft = i * 15;
+    const positionFromLeft = i * 33;
     const cardElement = document.createElement('div');
     cardElement.setAttribute('data-value', card.value);
     cardElement.classList.add('card', `${card.suit}-${card.value}`);
@@ -67,11 +67,33 @@ function createButtons() {
   shuffleButton.appendChild(textButton);
   document.getElementById('buttons-row').appendChild(shuffleButton);
 }
+
+// Funtion to shuffle the existing deck.
+function shuffle() {
+  const cardsForShuffle = [...cardsWrapper.children];
+  for (let i = cardsForShuffle.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * i);
+    const temp = cardsForShuffle[i];
+    cardsForShuffle[i] = cardsForShuffle[j];
+    cardsForShuffle[j] = temp;
+  }
+  while (cardsWrapper.firstChild) {
+    cardsWrapper.removeChild(cardsWrapper.lastChild);
+  }
+
+  cardsForShuffle.forEach((card, i) => {
+    const positionFromLeft = i * 33;
+    card.style.left = `${positionFromLeft}px`;
+    cardsWrapper.appendChild(card);
+  });
+}
+
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
   createButtons();
   createCards();
+  document.getElementById('shuffle-button').addEventListener('click', shuffle);
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
