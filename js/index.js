@@ -66,6 +66,13 @@ function createButtons() {
   const textButton = document.createTextNode('Shuffle');
   shuffleButton.appendChild(textButton);
   document.getElementById('buttons-row').appendChild(shuffleButton);
+  // adding new button Flip cards.
+  const flipCardsButton = document.createElement('BUTTON');
+  flipCardsButton.id = 'flip-button';
+  flipCardsButton.className = 'btn btn-lg btn-secondary';
+  const textFlipButton = document.createTextNode('Flip cards');
+  flipCardsButton.appendChild(textFlipButton);
+  document.getElementById('buttons-row').appendChild(flipCardsButton);
 }
 
 // Funtion to shuffle the existing deck.
@@ -88,12 +95,17 @@ function shuffle() {
   });
 }
 
+function flipCards() {
+  alert('It is clicking!!!!');
+}
+
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
   createButtons();
   createCards();
   document.getElementById('shuffle-button').addEventListener('click', shuffle);
+  document.getElementById('flip-button').addEventListener('click', flipCards);
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
