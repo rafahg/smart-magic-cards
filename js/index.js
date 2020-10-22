@@ -3,6 +3,8 @@ const cardsWrapper = document.querySelector('.cards-wrapper');
 const btnWrapper = document.querySelector('.btn-wrapper'); /* eslint-disable-line */
 const selectedCardsWrapper = document.querySelector('.selected-cards'); /* eslint-disable-line */
 const cards = [];
+const firstCardSelected = [];
+const selectedCards = [];
 
 /*
 HELPER FUNCTIONS. Functions for to keep clean and more manteinable
@@ -13,12 +15,31 @@ function showCards() {
   cards.forEach((card, i) => {
     const positionFromLeft = i * 33;
     const cardElement = document.createElement('div');
+    cardElement.setAttribute('onclick', 'selectElement(this)');
     cardElement.setAttribute('data-value', card.value);
     cardElement.classList.add('card', `${card.suit}-${card.value}`);
+    cardElement.setAttribute('id', `${cardElement.className}`);
     cardElement.style.left = `${positionFromLeft}px`;
     cardsWrapper.append(cardElement);
   });
 }
+// Function for show the selected card in the selected card wrapper.
+function showSelectedCard() {
+  const positionStyle = 'left';
+  selectedCardsWrapper.append(selectedCards[0]);
+  const pickedCard = document.getElementById(selectedCards[0].id);
+  pickedCard.style = positionStyle;
+}
+// Function for select the id of the clicked element on the rendered deck.
+/* eslint-disable */
+function selectElement(clickedElement) {
+  const pickedCard = clickedElement.id;
+  if (firstCardSelected.length === 0) {
+    firstCardSelected.push(pickedCard);
+  }
+  console.log(firstCardSelected);
+}
+/* eslint-enable */
 
 // MAIN FUNCTIONS.
 
@@ -100,6 +121,13 @@ function flipCards() {
   backDeck.classList.toggle('hidden');
 }
 
+function pickingCard() {
+  const selectedCard = document.getElementById(firstCardSelected[0]);
+  selectedCards.push(selectedCard);
+  document.getElementById(firstCardSelected[0]).remove();
+  showSelectedCard();
+}
+
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
@@ -110,3 +138,4 @@ function startGame() {
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
+document.getElementById('deck').addEventListener('click', pickingCard);

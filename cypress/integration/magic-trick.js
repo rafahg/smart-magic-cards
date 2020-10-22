@@ -1,6 +1,6 @@
 const suits = ['hearts', 'spades', 'diamonds', 'clubs'];
 const sortedCardsClasses = [];
-let selectedCard; /* eslint-disable-line */
+let firstCardSelected; /* eslint-disable-line */
 suits.forEach((suit) => [...Array(13)].forEach((_, i) => sortedCardsClasses.push(`${suit}-${i + 1}`)));
 
 describe('Play game', () => {
@@ -44,28 +44,28 @@ describe('Play game', () => {
     cy.contains('Flip cards').click();
 
     // /* The cards are now flipped */
-    // cy.get('.cards-wrapper').should('have.class', 'hidden');
+    cy.get('.cards-wrapper').should('have.class', 'hidden');
 
     // /* Click the `Flip cards` button */
-    // cy.contains('Flip cards').click();
+    cy.contains('Flip cards').click();
 
     // /* The cards are now flipped to be visible again */
-    // cy.get('.cards-wrapper').should('not.have.class', 'hidden');
+    cy.get('.cards-wrapper').should('not.have.class', 'hidden');
 
-    // cy.get('.selected-card-wrapper .card').should('not.exist');
-    // cy.contains('Magic').should('not.exist');
+    cy.get('.selected-card-wrapper .card').should('not.exist');
+    cy.contains('Magic').should('not.exist');
 
     // /* Click on the first card */
-    // cy.get('.card').then((cards) => {
-    //   [selectedCard] = cards;
-    //   cards[0].click();
-    // });
+    cy.get('.card').then((cards) => {
+      firstCardSelected = cards;
+      firstCardSelected[0].click();
+    });
 
     // /* The selected card moved to the `selected-card-wrapper` */
-    // cy.get('.selected-card-wrapper .card').then((cards) => {
-    //   expect(cards).to.have.length(1);
-    //   expect(cards[0]).to.equal(selectedCard);
-    // });
+    cy.get('.selected-card-wrapper .card').then((cards) => {
+      expect(cards).to.have.length(1);
+      expect(cards[0]).to.equal(firstCardSelected[0]);
+    });
 
     // /* Click on the `Magic` button */
     // cy.contains('Magic').click();
