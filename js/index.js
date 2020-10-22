@@ -30,6 +30,16 @@ function showSelectedCard() {
   const pickedCard = document.getElementById(selectedCards[0].id);
   pickedCard.style = positionStyle;
 }
+
+function createMagicButton() {
+  const magicButton = document.createElement('Button');
+  magicButton.id = 'magic-button';
+  magicButton.className = 'btn btn-lg btn-secondary';
+  const textMagicButton = document.createTextNode('Magic');
+  magicButton.appendChild(textMagicButton);
+  document.getElementById('buttons-row').appendChild(magicButton);
+}
+
 // Function for select the id of the clicked element on the rendered deck.
 /* eslint-disable */
 function selectElement(clickedElement) {
@@ -126,6 +136,7 @@ function pickingCard() {
   selectedCards.push(selectedCard);
   document.getElementById(firstCardSelected[0]).remove();
   showSelectedCard();
+  createMagicButton();
 }
 
 // Function to start the game by clearing the wrapper, creating
