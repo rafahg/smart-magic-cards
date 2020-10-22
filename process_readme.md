@@ -27,6 +27,9 @@ Whenever the test pass I have created a commit.
 
 When a general milestone is acomplish, generally a function fully developed and tested I have merged the branch in which I was working and created a new one and so on until the end.
 
+4. Deployment.
+
+
 
 
 
