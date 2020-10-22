@@ -7,11 +7,9 @@ const firstCardSelected = [];
 const selectedCards = [];
 
 /*
-HELPER FUNCTIONS. Functions for to keep clean and more manteinable
-the main functions in charge of the flow of the application.
+HELPER FUNCTIONS.
  */
 function showCards() {
-  // For each dataObject, create a new card and append it to the DOM
   cards.forEach((card, i) => {
     const positionFromLeft = i * 33;
     const cardElement = document.createElement('div');
@@ -23,7 +21,6 @@ function showCards() {
     cardsWrapper.append(cardElement);
   });
 }
-// Function for show the selected card in the selected card wrapper.
 function showSelectedCard() {
   const positionStyle = 'left';
   selectedCardsWrapper.append(selectedCards[0]);
@@ -74,7 +71,6 @@ function createFlip() {
   flipCardsButton.appendChild(textFlipButton);
   document.getElementById('buttons-row').appendChild(flipCardsButton);
 }
-// Function for select the id of the clicked element on the rendered deck.
 /* eslint-disable */
 function selectElement(clickedElement) {
   const pickedCard = clickedElement.id;
@@ -87,7 +83,6 @@ function selectElement(clickedElement) {
 // MAIN FUNCTIONS.
 
 function createCards() {
-  // Create an array with objects containing the value and the suit of each card
   for (let i = 0; i < 4; i += 1) {
     for (let j = 1; j <= 13; j += 1) {
       const cardObject = {
@@ -99,19 +94,14 @@ function createCards() {
   }
   showCards();
 }
-// Call Helper function showCards()
 
-// Function to clear out the initial button and create new buttons to play the game.
 function createButtons() {
   const startButton = document.getElementById('start-game');
   startButton.remove();
-  // adding new button shuffle
   createShuffle();
-  // adding new button Flip cards.
   createFlip();
 }
 
-// Funtion to shuffle the existing deck.
 function shuffle() {
   const cardsForShuffle = [...cardsWrapper.children];
   for (let i = cardsForShuffle.length - 1; i > 0; i -= 1) {
@@ -153,6 +143,7 @@ function pickingCardAndDoTrick() {
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
+  document.getElementById('description').innerHTML = 'Hello Magician!, now Shuffle or Flip the deck!!';
   createButtons();
   createCards();
   document.getElementById('shuffle-button').addEventListener('click', shuffle);
