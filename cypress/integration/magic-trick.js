@@ -26,7 +26,7 @@ describe('Play game', () => {
       const allCardClasses = [...cards].map((card) => card.classList[1]);
       expect(allCardClasses).to.deep.equal(sortedCardsClasses);
     });
-
+    cy.get('p').should('have.text', 'Hello Magician!!  Now you have two options, Shuffle the deck or hide/show the deck!'); /* eslint-disable-line */
     // /* Click the `Suffle` button */
     cy.contains('Shuffle').click();
 

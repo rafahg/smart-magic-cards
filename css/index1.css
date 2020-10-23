@@ -1,0 +1,145 @@
+
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    font-size: 14px;
+    font-family:"Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
+    background-color: #002945;
+    }
+  nav {
+      margin: 30px;
+  }
+  
+  .text {
+    float: left;
+    margin-left: 3vw;
+    opacity: 0.6;
+    z-index: 4;
+    max-width: 50%;
+  }
+  h1 {
+    font-size: 6vw;
+    line-height: 1;
+    letter-spacing: 2px;
+    font-weight: 100;
+    color: white;
+  }
+  h2 {
+    font-size: 5vw;
+    font-weight: 100;
+    color: white;
+  }
+  p {
+    font: 1.5vw 'Bevan';
+  }
+  a {
+    color: #691111;
+  }
+  
+  .wrapper {
+    width: 20vw;
+    max-width: 50%;
+    margin: 7vw auto 0 55vw;
+  }
+  .spinner-container {
+    perspective: 1000;
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateZ(5deg) translateZ(0);
+  }
+  .spinner {
+    text-align: center;
+    transform: translate3d(0, 0, 0) rotateY(7deg);
+    animation: spin 0.15s linear infinite;
+  }
+  .spinner-container:before,
+  .spinner-container:after {
+    content: '';
+    position: absolute;
+    height: 45vh;
+    width: 0.25em;
+    background: #0C3357;
+    animation: spinLines 0.05s linear infinite alternate;
+  }
+  .spinner-container:before {
+      top: -25vw;
+      left: 51%;
+      transform: rotateY(7deg);
+  }
+  .spinner-container:after {
+    top: 30vw;
+    left: 49%;
+    z-index: -1;
+    transform: rotateY(7deg);
+  }
+  
+  .spinner {
+    background-color: #1c2aa8;
+  }
+  
+  .spinner,
+  .card {
+      width: 33vw;
+      height: 43vw;
+      border-radius: 1em;
+      border: 1em solid #f3efe9;
+  }
+  
+  .card {
+    backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    padding: 6vw 0;
+    border-radius: 1em;
+    top: -1em;
+    transform: translateZ(0);
+  }
+  
+  .card:after,
+  .card:before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #141414;
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+  .card:before {
+    top: -0.5vw;
+    left: 50%;
+    margin-left: 2px;
+  }
+  .card:after {
+    bottom: -0.5vw;
+    left: 50%;
+    margin-left: -4px;
+  }
+  
+  .card img {
+    max-width: 70%;
+    width: 100%;
+  }
+  
+  @keyframes spin {
+    50% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(-180deg);
+    }
+  }
+  
+  @keyframes spinLines {
+    100% {
+      transform: rotateY(10deg) rotateZ(1deg);
+    }
+  }
+

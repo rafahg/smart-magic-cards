@@ -9,9 +9,40 @@ const selectedCards = [];
 /*
 HELPER FUNCTIONS.
  */
+
+/* HELPER MESSAGE FUNCTIONS */
+
+function startMessage() {
+  document.getElementById('description').innerHTML = 'Hello Magician!, now Shuffle and Flip the deck!!';
+  
+}
+
+function selectCardMessage() {
+  document.getElementById('description').innerHTML = 'Well done!!, Now you can pick a card from the deck!!!';
+}
+
+function doTrickMessage() {
+  document.getElementById('description').innerHTML = 'Nice!, so We are ready for trick. Click the Magic button please! And flip again to check I am real magician!!!!';
+}
+
+function trickDoneMessage() {
+  document.getElementById('description').innerHTML = 'TAAACHAN!!!. That was nice!, But, for real Magic, click that new button there.';
+}
+
+
+function realMagic() {
+  const realMagicButton = document.createElement('BUTTON');
+  realMagicButton.id = 'real-magic';
+  realMagicButton.className = 'btn btn-lg btn-secondary';
+  realMagicButton.setAttribute('onclick', "window.location.href='./index1.html'");
+  const textRealMagicButton = document.createTextNode('Real Magic!');
+  realMagicButton.appendChild(textRealMagicButton);
+  document.getElementById('buttons-row').appendChild(realMagicButton);
+
+}
 function showCards() {
   cards.forEach((card, i) => {
-    const positionFromLeft = i * 33;
+    const positionFromLeft = (1.5 + i) * 33;
     const cardElement = document.createElement('div');
     cardElement.setAttribute('onclick', 'selectElement(this)');
     cardElement.setAttribute('data-value', card.value);
@@ -71,6 +102,7 @@ function createFlip() {
   flipCardsButton.appendChild(textFlipButton);
   document.getElementById('buttons-row').appendChild(flipCardsButton);
 }
+
 /* eslint-disable */
 function selectElement(clickedElement) {
   const pickedCard = clickedElement.id;
@@ -115,20 +147,23 @@ function shuffle() {
   }
 
   cardsForShuffle.forEach((card, i) => {
-    const positionFromLeft = i * 33;
+    const positionFromLeft = (1.5 + i) * 33;
     card.style.left = `${positionFromLeft}px`;
     cardsWrapper.appendChild(card);
   });
+  selectCardMessage()
 }
 
 function flipCards() {
   const backDeck = document.getElementById('deck');
   backDeck.classList.toggle('hidden');
+  selectCardMessage()
 }
 
 function magicTrick() {
   selectingTrickDeck();
   movingCardsTrick();
+  realMagic();
 }
 
 function pickingCardAndDoTrick() {
@@ -137,13 +172,15 @@ function pickingCardAndDoTrick() {
   document.getElementById(firstCardSelected[0]).remove();
   showSelectedCard();
   createMagicButton();
+  doTrickMessage();
   document.getElementById('magic-button').addEventListener('click', magicTrick, { once: true });
+  document.getElementById('magic-button').addEventListener('click', trickDoneMessage, { once: true })
 }
 
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
-  document.getElementById('description').innerHTML = 'Hello Magician!, now Shuffle or Flip the deck!!';
+  startMessage();
   createButtons();
   createCards();
   document.getElementById('shuffle-button').addEventListener('click', shuffle);

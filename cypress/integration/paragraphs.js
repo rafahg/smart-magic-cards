@@ -1,4 +1,4 @@
-describe('Implementations', () => {
+/* describe('Implementations', () => {
   it('Shows different messages', () => {
     cy.visit('./index.html');
     cy.get('.navbar-brand img').should('have.exist');
@@ -9,15 +9,6 @@ describe('Implementations', () => {
     cy.get('#start-game').should('have.text', "Let's get started").click();
     cy.get('#start-game').should('have.not.exist');
     cy.get('#description').should('have.text', 'Hello Magician!, now Shuffle or Flip the deck!!');
-    
-
-
-
-
-
-
-
-
   });
 });
-
+ */
