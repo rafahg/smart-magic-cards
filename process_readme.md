@@ -1,10 +1,9 @@
 ## TECH-TEST WALKTHROUGH
 
-Through this walkthrough of the tech-test is my intention to show my logical process in order to obtain the solution asked.
-
+Through this walkthrough of the tech-test is my intention to show my approach to the several aspects of my process in a more detailed way.
 1. GENERAL APPROACH.
 
-My approach has been trying to implement the MVP, understood that as the minimum requirements to make the web-app works.
+My approach has been trying to implement the MVP, understood that, as the minimum requirements to make the web-app works.
 
 Once the MPV product has been implemented I have tried to accomplish the tasks assigned as bonus points. 
 
