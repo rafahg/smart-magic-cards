@@ -157,7 +157,6 @@ function shuffle() {
 function flipCards() {
   const backDeck = document.getElementById('deck');
   backDeck.classList.toggle('hidden');
-  selectCardMessage()
 }
 
 function magicTrick() {
@@ -185,6 +184,7 @@ function startGame() {
   createCards();
   document.getElementById('shuffle-button').addEventListener('click', shuffle);
   document.getElementById('flip-button').addEventListener('click', flipCards);
+  document.getElementById('flip-button').addEventListener('click', selectCardMessage, { once : true });
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
