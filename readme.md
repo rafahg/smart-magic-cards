@@ -52,6 +52,10 @@ _Note:_ [Cypress.io](https://www.cypress.io/) is included in the project and all
   - Implement as many as Bonus points requirements possible.
   - Testing the MVP as a fundamental requirements, following a TDD approach.
   - Strict version control methodology.
+
+
+ <strong>The MVP and the fully tested code is the main branch. The code which run in the Final Functionality link is in the devSpace-paragraphs branch.</strong>
+  I have not merged that branch because is not covered by test in its last implementations and needs to be  reviewed.
   
   You can see my final implementation, on a functionality level here:
 
