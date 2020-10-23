@@ -12,7 +12,7 @@ It has been my intention to write the best code possible, however, due to lack o
 
 I have used helper functions to refactor the code to make it clearer and maintain cleaner the main functions, in charge of the flow of the game.
 
-2. Version Control Approach.
+2. VERSION CONTROL APPROACH.
 
 I have worked always in branches following a ticket approach. 
 Each branch had been used for particular function development, and until the function is not fully developed and tested I did not merge the branch in the main one.
@@ -23,7 +23,7 @@ Only have been merged to the main branch those branches which have been fully te
 
 I have added more functionalities in other branches, and the final version regarding functionality is in the devSpace-paragraphs branch, which has not been merged to the main branch due to several problems to be resolved.
 
-3. Testing Approach.
+3. TESTING APPROACH.
 
 I have followed the RED - GREEN, TDD approach. Trying to fail the test, see what I need to develop to pass it and so on.
 
