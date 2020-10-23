@@ -50,7 +50,7 @@ _Note:_ [Cypress.io](https://www.cypress.io/) is included in the project and all
   
   - Getting first a MVP based on the requirements.
   - Implement as many as Bonus points requirements possible.
-  - Testing the MVP as a fundamental requirements, following a TDD approach.
+  - Testing the MVP as a fundamental requirement, following a TDD approach.
   - Strict version control methodology.
 
 
