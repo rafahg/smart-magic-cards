@@ -5977,6 +5977,7 @@ h1 {
   overflow: hidden;
   margin: 0 2rem;
   border-radius: 10px;
+  overflow: auto;
 }
 .cards-wrapper.hidden .card {
   background: #00d4ff;
