@@ -7,13 +7,42 @@ const firstCardSelected = [];
 const selectedCards = [];
 
 /*
-HELPER FUNCTIONS. Functions for to keep clean and more manteinable
-the main functions in charge of the flow of the application.
+HELPER FUNCTIONS.
  */
+
+/* HELPER MESSAGE FUNCTIONS */
+
+function startMessage() {
+  document.getElementById('description').innerHTML = 'Hello Magician!, now Shuffle and Flip the deck!!';
+  
+}
+
+function selectCardMessage() {
+  document.getElementById('description').innerHTML = 'Well done!!, Now you can pick a card from the deck!!!';
+}
+
+function doTrickMessage() {
+  document.getElementById('description').innerHTML = 'Nice!, so We are ready for trick. Click the Magic button please! And flip again to check I am real magician!!!!';
+}
+
+function trickDoneMessage() {
+  document.getElementById('description').innerHTML = 'TAAACHAN!!!. That was nice!, But, for real Magic, click that new button there.';
+}
+
+
+function realMagic() {
+  const realMagicButton = document.createElement('BUTTON');
+  realMagicButton.id = 'real-magic';
+  realMagicButton.className = 'btn btn-lg btn-secondary';
+  realMagicButton.setAttribute('onclick', "window.location.href='./index1.html'");
+  const textRealMagicButton = document.createTextNode('Real Magic!');
+  realMagicButton.appendChild(textRealMagicButton);
+  document.getElementById('buttons-row').appendChild(realMagicButton);
+
+}
 function showCards() {
-  // For each dataObject, create a new card and append it to the DOM
   cards.forEach((card, i) => {
-    const positionFromLeft = i * 33;
+    const positionFromLeft = (1.5 + i) * 33;
     const cardElement = document.createElement('div');
     cardElement.setAttribute('onclick', 'selectElement(this)');
     cardElement.setAttribute('data-value', card.value);
@@ -23,7 +52,6 @@ function showCards() {
     cardsWrapper.append(cardElement);
   });
 }
-// Function for show the selected card in the selected card wrapper.
 function showSelectedCard() {
   const positionStyle = 'left';
   selectedCardsWrapper.append(selectedCards[0]);
@@ -57,64 +85,16 @@ function movingCardsTrick() {
   });
 }
 
-// Function for select the id of the clicked element on the rendered deck.
-/* eslint-disable */
-function selectElement(clickedElement) {
-  const pickedCard = clickedElement.id;
-  if (firstCardSelected.length === 0) {
-    firstCardSelected.push(pickedCard);
-  }
-  console.log(firstCardSelected);
-}
-/* eslint-enable */
-
-// MAIN FUNCTIONS.
-
-function createCards() {
-  // Create an array with objects containing the value and the suit of each card
-  for (let i = 1; i <= 13; i += 1) {
-    const cardObject = {
-      value: i,
-      suit: suit[0],
-    };
-    cards.push(cardObject);
-  }
-  for (let j = 1; j <= 13; j += 1) {
-    const cardObject = {
-      value: j,
-      suit: suit[1],
-    };
-    cards.push(cardObject);
-  }
-  for (let k = 1; k <= 13; k += 1) {
-    const cardObject = {
-      value: k,
-      suit: suit[2],
-    };
-    cards.push(cardObject);
-  }
-  for (let l = 1; l <= 13; l += 1) {
-    const cardObject = {
-      value: l,
-      suit: suit[3],
-    };
-    cards.push(cardObject);
-  }
-  // Call Helper function showCards()
-  showCards();
-}
-// Function to clear out the initial button and create new buttons to play the game.
-function createButtons() {
-  const startButton = document.getElementById('start-game');
-  startButton.remove();
-  // adding new button shuffle
+function createShuffle() {
   const shuffleButton = document.createElement('BUTTON');
   shuffleButton.id = 'shuffle-button';
   shuffleButton.className = 'btn btn-lg btn-secondary';
   const textButton = document.createTextNode('Shuffle');
   shuffleButton.appendChild(textButton);
   document.getElementById('buttons-row').appendChild(shuffleButton);
-  // adding new button Flip cards.
+}
+
+function createFlip() {
   const flipCardsButton = document.createElement('BUTTON');
   flipCardsButton.id = 'flip-button';
   flipCardsButton.className = 'btn btn-lg btn-secondary';
@@ -123,7 +103,37 @@ function createButtons() {
   document.getElementById('buttons-row').appendChild(flipCardsButton);
 }
 
-// Funtion to shuffle the existing deck.
+/* eslint-disable */
+function selectElement(clickedElement) {
+  const pickedCard = clickedElement.id;
+  if (firstCardSelected.length === 0) {
+    firstCardSelected.push(pickedCard);
+  }
+}
+/* eslint-enable */
+
+// MAIN FUNCTIONS.
+
+function createCards() {
+  for (let i = 0; i < 4; i += 1) {
+    for (let j = 1; j <= 13; j += 1) {
+      const cardObject = {
+        value: j,
+        suit: suit[i],
+      };
+      cards.push(cardObject);
+    }
+  }
+  showCards();
+}
+
+function createButtons() {
+  const startButton = document.getElementById('start-game');
+  startButton.remove();
+  createShuffle();
+  createFlip();
+}
+
 function shuffle() {
   const cardsForShuffle = [...cardsWrapper.children];
   for (let i = cardsForShuffle.length - 1; i > 0; i -= 1) {
@@ -137,20 +147,23 @@ function shuffle() {
   }
 
   cardsForShuffle.forEach((card, i) => {
-    const positionFromLeft = i * 33;
+    const positionFromLeft = (1.5 + i) * 33;
     card.style.left = `${positionFromLeft}px`;
     cardsWrapper.appendChild(card);
   });
+  selectCardMessage()
 }
 
 function flipCards() {
   const backDeck = document.getElementById('deck');
   backDeck.classList.toggle('hidden');
+  selectCardMessage()
 }
 
 function magicTrick() {
   selectingTrickDeck();
   movingCardsTrick();
+  realMagic();
 }
 
 function pickingCardAndDoTrick() {
@@ -159,12 +172,15 @@ function pickingCardAndDoTrick() {
   document.getElementById(firstCardSelected[0]).remove();
   showSelectedCard();
   createMagicButton();
+  doTrickMessage();
   document.getElementById('magic-button').addEventListener('click', magicTrick, { once: true });
+  document.getElementById('magic-button').addEventListener('click', trickDoneMessage, { once: true })
 }
 
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
+  startMessage();
   createButtons();
   createCards();
   document.getElementById('shuffle-button').addEventListener('click', shuffle);

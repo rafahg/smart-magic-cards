@@ -5796,7 +5796,21 @@ h1 {
   width: 216px;
   position: absolute;
   background-size: 100%;
+  animation-duration: 3s;
+  animation-name: slidein;
 }
+
+@keyframes slidein {
+  from {
+    left: 100%;
+    /* width: 300% */
+  }
+
+}
+
+
+
+
 .card.hearts-1 {
   background-image: url("../assets/cards/hearts-1.svg");
 }
@@ -5960,7 +5974,7 @@ h1 {
 .cards-wrapper {
   width: calc(100vw - 4rem);
   height: 300px;
-  overflow: scroll;
+  overflow: hidden;
   margin: 0 2rem;
   border-radius: 10px;
 }
@@ -5977,6 +5991,7 @@ h1 {
   border: 2px dashed white;
   border-radius: 6px;
   position: relative;
+  
 }
 
 .body-bg {
