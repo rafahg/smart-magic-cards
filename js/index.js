@@ -72,33 +72,14 @@ function selectElement(clickedElement) {
 
 function createCards() {
   // Create an array with objects containing the value and the suit of each card
-  for (let i = 1; i <= 13; i += 1) {
-    const cardObject = {
-      value: i,
-      suit: suit[0],
-    };
-    cards.push(cardObject);
-  }
-  for (let j = 1; j <= 13; j += 1) {
-    const cardObject = {
-      value: j,
-      suit: suit[1],
-    };
-    cards.push(cardObject);
-  }
-  for (let k = 1; k <= 13; k += 1) {
-    const cardObject = {
-      value: k,
-      suit: suit[2],
-    };
-    cards.push(cardObject);
-  }
-  for (let l = 1; l <= 13; l += 1) {
-    const cardObject = {
-      value: l,
-      suit: suit[3],
-    };
-    cards.push(cardObject);
+  for (let i = 0; i < 4; i += 1) {
+    for (let j = 1; j <= 13; j += 1) {
+      const cardObject = {
+        value: j,
+        suit: suit[i],
+      };
+      cards.push(cardObject);
+    }
   }
   // Call Helper function showCards()
   showCards();

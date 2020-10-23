@@ -1,12 +1,23 @@
-# Smart Magic Cards
-Join Smart by performing a simple magic trick.
+# Smart Magic Cards Tech-test.
 
-A magician has a deck of cards, 52 cards, 13 of each suit (Hearts, Diamonds, Clubs and Spades).<br>
-He will show us all of the cards and we will see that they are ordered and sorted by suit.<br>
-We are asked to shuffle the deck.<br>
-Then the magician askes us to pick a single card.<br>
-When the magician reveals the deck of cards once more, the picked card is removed as well as all the related valued cards.<br>
-Eg. the 8 of hears it picked, now all the 8's are removed from the deck and added to the picked card.<br>
+This a tech test for SmartPensions. 
+
+### SETUP
+
+For setting up this projec in your local system:
+
+1. Clone the repository
+```
+git clone git@github.com:smartpension/smart-magic-cards.git
+```
+2. Install Yarn 
+ In mac Os as an example
+```
+$ brew install yarn 
+``` 
+For a more detailed explanation for your system:
+
+
 
 ### Requirements
 - Make sure all 4 suits of cards are rendered and sorted by suit. There are 13 cards in each suit ( ♥, ♣, ♦, ♠ ).
